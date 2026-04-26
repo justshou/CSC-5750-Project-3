@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("http://localhost:5050/getAvailableSlots")
+  fetch("/getAvailableSlots")
     .then((response) => response.json())
     .then((data) => {
       const select = document.querySelector("#slot-select");
@@ -60,7 +60,7 @@ document.querySelector("#register-btn").onclick = function () {
     return;
   }
 
-  fetch("http://localhost:5050/registerStudent", {
+  fetch("/registerStudent", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
