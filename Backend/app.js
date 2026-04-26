@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-const dbService = require("./dbService");
+const dbService = require("../dbService");
 
 app.use(cors());
 app.use(express.json());
