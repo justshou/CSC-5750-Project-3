@@ -12,6 +12,7 @@ const dbService = require("./dbService");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname));
 
 // read
 app.get("/getAll", (request, response) => {
@@ -38,6 +39,12 @@ app.post("/registerStudent", (request, response) => {
   db.registerStudent(request.body)
     .then((data) => response.json(data))
     .catch((err) => response.json({ success: false, message: err.message }));
+});
+
+const path = require("path");
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // if we configure here directly
