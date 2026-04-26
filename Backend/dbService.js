@@ -6,19 +6,19 @@ dotenv.config(); // read from .env file
 
 let instance = null;
 
-// if you use .env to configure
-console.log("HOST: " + process.env.HOST);
+console.log("HOST: " + process.env.DB_HOST);
 console.log("DB USER: " + process.env.DB_USER);
-console.log("PASSWORD: " + process.env.PASSWORD);
-console.log("DATABASE: " + process.env.DATABASE);
-console.log("DB PORT: " + process.env.DB_PORT);
+console.log("DATABASE: " + process.env.DB_NAME);
 
 const connection = mysql.createConnection({
-  host: process.env.HOST,
+  host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   port: process.env.DB_PORT,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 connection.connect((err) => {
